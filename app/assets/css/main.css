@@ -1,0 +1,220 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: 'Inter', sans-serif;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------
+   🎨 Main theme
+--------------------------- */
+@theme inline {
+    /* Radius */
+    --radius: 0.625rem;
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+
+    /* Colors */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    /* Charts */
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    /* Sidebar */
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    /* Text */
+    --text-3xl: 1.75rem;
+    --text-4xl: 2rem;
+    --text-5xl: 2.5rem;
+
+    /* Animations */
+    --animate-accordion-down: accordion-down 0.2s ease-out;
+    --animate-accordion-up: accordion-up 0.2s ease-out;
+    --animate-collapsible-down: collapsible-down 0.2s ease-in-out;
+    --animate-collapsible-up: collapsible-up 0.2s ease-in-out;
+}
+
+/* ---------------------------
+   🌞 Light theme (HEX)
+--------------------------- */
+:root {
+    --radius: 0.625rem;
+
+    --background: #ffffff;
+    --foreground: #111112;
+    --card: #f9f9f9;
+    --card-foreground: #333333;
+    --popover: #f9f9f9;
+    --popover-foreground: #333333;
+
+    --primary: #111112;
+    --primary-foreground: #ffffff;
+    --secondary: #e0e0e0;
+    --secondary-foreground: #111112;
+
+    --muted: #e0e0e0;
+    --muted-foreground: #757575;
+    --accent: #77EF95;
+    --accent-foreground: #111112;
+    --destructive: #FF0000;
+    --destructive-foreground: #FFFFFF;
+
+    --border: #E0E0E0;
+    --input: #F9F9F9;
+    --ring: #388E3C;
+
+    /* Charts */
+    --chart-1: #A4D65E;
+    --chart-2: #5B9DF3;
+    --chart-3: #6474E0;
+    --chart-4: #D3F34D;
+    --chart-5: #C4E13B;
+
+    /* Sidebar */
+    --sidebar: #F9F9F9;
+    --sidebar-foreground: #111112;
+    --sidebar-primary: #111112;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #77EF95;
+    --sidebar-accent-foreground: #111112;
+    --sidebar-border: #E0E0E0;
+    --sidebar-ring: #388E3C;
+}
+
+/* ---------------------------
+   🌚 Dark theme (HEX)
+--------------------------- */
+.dark {
+    --background: #111112;
+    --foreground: #ffffff;
+    --card: #1a1a1a;
+    --card-foreground: #f9f9f9;
+    --popover: #1a1a1a;
+    --popover-foreground: #f9f9f9;
+
+    --primary: #ffffff;
+    --primary-foreground: #111112;
+    --secondary: #333333;
+    --secondary-foreground: #ffffff;
+
+    --muted: #333333;
+    --muted-foreground: #f9f9f9;
+    --accent: #77EF95;
+    --accent-foreground: #111112;
+    --destructive: #FF0000;
+    --destructive-foreground: #FFFFFF;
+
+    --border: #555555;
+    --input: #333333;
+    --ring: #77EF95;
+
+    /* Charts */
+    --chart-1: #7CBE4A;
+    --chart-2: #4A7FD9;
+    --chart-3: #6474E0;
+    --chart-4: #A9D13C;
+    --chart-5: #A0C42D;
+
+    /* Sidebar */
+    --sidebar: #111112;
+    --sidebar-foreground: #ffffff;
+    --sidebar-primary: #7CBE4A;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #77EF95;
+    --sidebar-accent-foreground: #111112;
+    --sidebar-border: #555555;
+    --sidebar-ring: #77EF95;
+}
+
+/* ---------------------------
+   ⚙️ Base styles
+--------------------------- */
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+@layer utilities {
+    /* Texts */
+    .h1 { @apply font-semibold; font-size: 34px; line-height: 48px; vertical-align: middle; }
+    .h2 { @apply font-semibold; font-size: 24px; line-height: 32px; vertical-align: middle; }
+    .h3 { @apply font-semibold; font-size: 18px; line-height: 24px; vertical-align: middle; }
+    .h4 { @apply font-medium; font-size: 16px; line-height: 20px; vertical-align: middle; }
+    .h5 { @apply font-medium; font-size: 14px; line-height: 18px; vertical-align: middle; }
+    .h6 { @apply font-medium; font-size: 12px; line-height: 16px; vertical-align: middle; }
+
+    .p1 { font-size: 16px; line-height: 20px; font-weight: 400; vertical-align: middle; }
+    .p2 { font-size: 14px; line-height: 18px; font-weight: 400; vertical-align: middle; }
+    .p3 { font-size: 12px; line-height: 16px; font-weight: 400; vertical-align: middle; }
+    .p4 { font-size: 10px; line-height: 14px; font-weight: 400; vertical-align: middle; }
+
+    /* Scrollbars */
+    .custom-scrollbar {
+        overflow-x: auto;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 0.4rem; height: 0.4rem; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #E0E0E0; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #B0B0B0; border-radius: 0.25rem; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #757575; }
+}
+
+/* ---------------------------
+    Animations
+--------------------------- */
+@keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--reka-accordion-content-height); }
+}
+@keyframes accordion-up {
+    from { height: var(--reka-accordion-content-height); }
+    to { height: 0; }
+}
+@keyframes collapsible-down {
+    from { height: 0; }
+    to { height: var(--radix-collapsible-content-height); }
+}
+@keyframes collapsible-up {
+    from { height: var(--radix-collapsible-content-height); }
+    to { height: 0; }
+}

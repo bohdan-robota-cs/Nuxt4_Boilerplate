@@ -3,6 +3,7 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 
 export default withNuxt([eslintPluginPrettierRecommended], {
   rules: {
-    'no-console': ['warn', {}],
+    'no-console': ['warn'],
+    'prettier/prettier': ['warn', {}, { usePrettierrc: true }],
   },
 });
